@@ -1,1 +1,0 @@
-var whoswhereApp = angular.module('whoswhereApp', ['ui.bootstrap']);

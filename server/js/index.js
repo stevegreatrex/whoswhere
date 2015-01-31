@@ -5,20 +5,19 @@
     var api = require('./api');
     var path = require('path');
 
-    var app = express();
-    app.use(express.static(path.join(__dirname, '../views')));
-    app.use('/app', express.static(path.join(__dirname, '../../app')));
-    app.use('/content', express.static(path.join(__dirname, '../content')));
+    var app = express();;
     app.use('/lib', express.static(path.join(__dirname, '../../bower_components')));
+    app.use('/app', express.static(path.join(__dirname, '../../app')))
+    app.use(express.static(path.join(__dirname, '../../app')))
 
     app.get('/', function (req, res) {
-        res.render('/views/index.html');
+        res.render('index.html');
     });
 
     function handleError(res) {
         return function (err) {
             console.error(err);
-            res.status(500).text(err);
+            res.status(500).send(err);
         }
     }
 
@@ -30,6 +29,12 @@
     });
 
     app.get('/api/absence', function (req, res) {
+        if (!req.query.start || !req.query.end) {
+            console.warn('Invalid request:', req.originalUrl);
+            res.status(400).send('start and end query parameters are required');
+            return;
+        }
+
         api.getAbsences(req.query.start, req.query.end)
             .then(function (absences) {
                 res.status(200).json(absences);
