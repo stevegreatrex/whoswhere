@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" ng-app>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="whoswhereApp">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="content/site.css" />
 </head>
 <body>
+    <!-- navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top navbar">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -29,12 +30,24 @@
     </div>
     </nav>
 
-    <div class="container-fluid">
+    <!-- loading message -->
+    <div class="container-fluid" ng-show="false">
+        <div class="page-loading-message alert alert-info">
+            <strong>Loading...</strong>
+        </div>
+    </div>
+
+    <!-- content -->
+    <div class="container-fluid" ng-show="true" class="ng-hide">
         Nothing here {{'yet'}}
-    </div><!-- /.container -->
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
     <script src="/lib/angular/angular.min.js"></script>
+    <script src="/lib/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="/lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+    <script src="/app/js/whoswhereApp.js"></script>
 </body>
 </html>
