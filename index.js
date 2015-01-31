@@ -3,6 +3,7 @@
 var express = require('express');
 var app = express();
 app.use(express.static(__dirname + '/server/views'));
+app.use('/app', express.static(__dirname + '/app'));
 app.use('/content', express.static(__dirname + '/server/content'));
 app.use('/lib', express.static(__dirname + '/bower_components'));
 
