@@ -1,0 +1,1 @@
+"/c/Program Files/PostgreSQL/9.4/bin/psql.exe" -U postgres -f create_db.sql postgres
