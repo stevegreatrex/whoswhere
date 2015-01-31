@@ -20,6 +20,7 @@ CREATE TABLE users (
     workStreamId int not null,
     firstName varchar (100) not null,
     lastName varchar (100) not null,
+    imageUrl varchar(200) not null,
     CONSTRAINT user_work_stream FOREIGN KEY (workStreamId) REFERENCES work_streams (id)
 );
 
@@ -46,12 +47,12 @@ CREATE AGGREGATE public.first (
         stype    = anyelement
 );
 
-INSERT INTO work_streams (id, name)
+INSERT INTO work_streams (id, name, color)
 VALUES
-    (1, 'Proposition Development', '#aa3939'),
-    (2, 'Engineering', '#aa6c39'),
-    (3, 'Sales and Marketing', '#226666'),
-    (4, 'Project Management', '#2d882d');
+    (1, 'Proposition Development', '#337ab7'),
+    (2, 'Engineering', '#5cb85c'),
+    (3, 'Sales and Marketing', '#f0ad4e'),
+    (4, 'Project Management', '#d9534f');
 
 INSERT INTO absence_types (id, name)
 VALUES
@@ -59,31 +60,31 @@ VALUES
     (2, 'Vacation'),
     (3, 'Training');
 
-INSERT INTO users (id, firstName, lastName, workStreamId)
+INSERT INTO users (id, firstName, lastName, workStreamId, imageUrl)
 VALUES
-    (1,'Matthew','Webb', 1),
-    (2,'Thomas','William Burgess', 1),
-    (3,'Henry','Sullivan', 1),
-    (4,'Enrique','Tirabocchi', 1),
-    (5,'Charles','Toth', 1),
-    (6,'Gertrude','Ederle', 1),
-    (7,'Amelia','Gade Corson', 1),
-    (8,'Edward','H. Temme', 2),
-    (9,'Florence','Chadwick', 2),
-    (10,'Damian','Pizá Beltran', 2),
-    (11,'Marilyn','Bell', 2),
-    (12,'Brojen','Das', 2),
-    (13,'Arati','Saha', 2),
-    (14,'Mihir','Sen', 2),
-    (15,'Antonio','Abertondo', 2),
-    (16,'Jon','Erikson', 3),
-    (17,'John','Maclean', 3),
-    (18,'Philippe','Croizon', 3),
-    (19,'Trent','Grimsey', 3),
-    (20,'Philip','Rush', 3),
-    (21,'Kevin','Murphy', 4),
-    (22,'Alison','Streeter', 4),
-    (23,'Cynthia','Nicholas', 4);
+    (1,'Matthew','Webb', 1, 'http://api.randomuser.me/portraits/thumb/men/1.jpg'),
+    (2,'Thomas','William Burgess', 1, 'http://api.randomuser.me/portraits/thumb/men/2.jpg'),
+    (3,'Henry','Sullivan', 1, 'http://api.randomuser.me/portraits/thumb/men/4.jpg'),
+    (4,'Enrique','Tirabocchi', 1, 'http://api.randomuser.me/portraits/thumb/men/4.jpg'),
+    (5,'Charles','Toth', 1, 'http://api.randomuser.me/portraits/thumb/men/5.jpg'),
+    (6,'Gertrude','Ederle', 1, 'http://api.randomuser.me/portraits/thumb/men/6.jpg'),
+    (7,'Amelia','Gade Corson', 1, 'http://api.randomuser.me/portraits/thumb/women/55.jpg'),
+    (8,'Edward','H. Temme', 2, 'http://api.randomuser.me/portraits/thumb/men/7.jpg'),
+    (9,'Florence','Chadwick', 2, 'http://api.randomuser.me/portraits/thumb/women/15.jpg'),
+    (10,'Damian','Pizá Beltran', 2, 'http://api.randomuser.me/portraits/thumb/men/8.jpg'),
+    (11,'Marilyn','Bell', 2, 'http://api.randomuser.me/portraits/thumb/women/20.jpg'),
+    (12,'Brojen','Das', 2, 'http://api.randomuser.me/portraits/thumb/men/9.jpg'),
+    (13,'Arati','Saha', 2, 'http://api.randomuser.me/portraits/thumb/men/10.jpg'),
+    (14,'Mihir','Sen', 2, 'http://api.randomuser.me/portraits/thumb/men/11.jpg'),
+    (15,'Antonio','Abertondo', 2, 'http://api.randomuser.me/portraits/thumb/men/12.jpg'),
+    (16,'Jon','Erikson', 3, 'http://api.randomuser.me/portraits/thumb/men/13.jpg'),
+    (17,'John','Maclean', 3, 'http://api.randomuser.me/portraits/thumb/men/14.jpg'),
+    (18,'Philippe','Croizon', 3, 'http://api.randomuser.me/portraits/thumb/men/15.jpg'),
+    (19,'Trent','Grimsey', 3, 'http://api.randomuser.me/portraits/thumb/men/16.jpg'),
+    (20,'Philip','Rush', 3, 'http://api.randomuser.me/portraits/thumb/men/17.jpg'),
+    (21,'Kevin','Murphy', 4, 'http://api.randomuser.me/portraits/thumb/men/18.jpg'),
+    (22,'Alison','Streeter', 4, 'http://api.randomuser.me/portraits/thumb/women/11.jpg'),
+    (23,'Cynthia','Nicholas', 4, 'http://api.randomuser.me/portraits/thumb/women/1.jpg');
 
 INSERT INTO absences (userId, absenceDate, unit, absenceTypeId)
 VALUES

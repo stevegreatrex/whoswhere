@@ -7,8 +7,9 @@
 
     var app = express();;
     app.use('/lib', express.static(path.join(__dirname, '../../bower_components')));
-    app.use('/app', express.static(path.join(__dirname, '../../app')))
-    app.use(express.static(path.join(__dirname, '../../app')))
+    app.use('/app', express.static(path.join(__dirname, '../../app')));
+    app.use('/shared', express.static(path.join(__dirname, '../../shared-js')));
+    app.use(express.static(path.join(__dirname, '../../app')));
 
     app.get('/', function (req, res) {
         res.render('index.html');

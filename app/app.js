@@ -3,6 +3,10 @@
         'ngRoute',
         'whoswhere.navigation',
         'whoswhere.home',
+        'whoswhere.absenceApi',
+        'whoswhere.daySummary',
+        'whoswhere.spinner',
+        'whoswhere.Model',
         'ui.bootstrap'
     ])
 

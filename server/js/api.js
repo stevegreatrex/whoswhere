@@ -34,7 +34,9 @@
         return connect().then(function (client) {
             return new Promise(function (resolve, reject) {
                 client.query(
-                'SELECT users.id as userId, sum(unit) as unit, first(firstName) as firstName, first(lastName) as lastName, first(work_streams.name) as workStream, absence_types.name as type, first(to_char(absenceDate, \'yyyy-mm-dd\')) as absenceDate FROM absences ' +
+                'SELECT users.id as userId, sum(unit) as unit, first(firstName) as firstName, first(lastName) as lastName, ' +
+                'first(work_streams.name) as workStream, first(work_streams.color) as workStreamColor, absence_types.name as type, ' +
+                'first(to_char(absenceDate, \'yyyy-mm-dd\')) as absenceDate, first(users.imageUrl) as imageUrl FROM absences ' +
                 'JOIN users on absences.userId=users.id ' +
                 'JOIN work_streams on users.workStreamId=work_streams.id ' +
                 'JOIN absence_types on absences.absenceTypeId=absence_types.id ' +
@@ -58,7 +60,9 @@
         return connect().then(function (client) {
             return new Promise(function (resolve, reject) {
                 client.query(
-                'SELECT users.id as userId, sum(unit) as unit, first(firstName) as firstName, first(lastName) as lastName, first(work_streams.name) as workStream, absence_types.name as type, first(to_char(absenceDate, \'yyyy-mm-dd\')) as absenceDate FROM absences ' +
+                'SELECT users.id as userId, sum(unit) as unit, first(firstName) as firstName, first(lastName) as lastName, '+
+                'first(work_streams.name) as workStream, first(work_streams.color) as workStreamColor, absence_types.name as type, '+
+                'first(to_char(absenceDate, \'yyyy-mm-dd\')) as absenceDate, first(users.imageUrl) as imageUrl FROM absences ' +
                 'JOIN users on absences.userId=users.id ' +
                 'JOIN work_streams on users.workStreamId=work_streams.id ' +
                 'JOIN absence_types on absences.absenceTypeId=absence_types.id ' +

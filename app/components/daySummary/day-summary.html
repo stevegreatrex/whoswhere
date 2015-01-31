@@ -1,0 +1,42 @@
+<div class="day-summary">
+    <div>
+        <div class="clearfix btn-group date-picker-buttons">
+            <button type="button" class="btn btn-default col-xs-2" ng-click="changeDay(-1)">
+                <i class="glyphicon glyphicon-chevron-left"></i>
+            </button>
+            <button ng-click="open($event)"
+                    datepicker-popup="{{format}}"
+                    datepicker-options="dateOptions"
+                    ng-model="date"
+                    ng-change="update()"
+                    is-open="opened"
+                    date-disabled="disabled(date, mode)"
+                    show-button-bar="false"
+                    close-text="Close"
+                    class="btn btn-default col-xs-8"
+                    type="button">
+                {{date | amDateFormat: format.toUpperCase()}}
+            </button>
+            <button type="button" class="btn btn-default col-xs-2" ng-click="changeDay(1)">
+                <i class="glyphicon glyphicon-chevron-right"></i>
+            </button>
+        </div>
+        <spinner for="loading" />
+        <h5 class="text-muted text-center no-data-message" ng-show="data.absences.length === 0 && !loading">No-one is off!</h5>
+        <ul class="absence-list" ng-show="!loading">
+            <li ng-repeat="absence in data.absences | orderBy:'user.workStream'">
+                <div class="media absence" ng-style="{ 'border-color': absence.user.workStreamColor }" title="{{absence.user.workStream}}">
+                    <div class="media-left">
+                        <img class="img-circle" ng-src="{{absence.user.imageUrl}}" height="30px">
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">{{absence.user.firstName}} {{absence.user.lastName}}</h4>
+                        <h5>{{absence.type}} <span ng-show="absence.unit !== 'all'">({{absence.unit}})</span></h5>
+                        <div class="workstream-marker"
+                             ng-style="{ 'background-color': absence.user.workStreamColor }"></div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

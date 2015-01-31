@@ -1,3 +1,5 @@
+/*global angular:false*/
+
 (function(angular) {
     angular.module('whoswhere.home', [
         'ngRoute'
