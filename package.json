@@ -2,7 +2,7 @@
   "name": "whoswhere",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/js/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,7 @@
   "license": "BSD-2-Clause",
   "dependencies": {
     "express": "~4.11.1",
-    "pg": "~4.2.0"
+    "pg": "~4.2.0",
+    "es6-promise": "~2.0.1"
   }
 }

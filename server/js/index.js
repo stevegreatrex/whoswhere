@@ -1,9 +1,7 @@
 /*global require: false, __dirname: false*/
 
 var express = require('express');
-var pg = require('pg');
-
-var config = require('./config');
+var api = require('./api');
 
 var app = express();
 app.use(express.static(__dirname + '/server/views'));
@@ -15,19 +13,25 @@ app.get('/', function(req, res) {
   res.render('/server/views/index.html');
 });
 
-app.get('/api/absence', function(req, res) {
-   pg.connect(config.db, function(err, client, done) {
-       if (err) {
-           console.error(err);
-           done();
-           return;
-       }
+function handleError(res) {
+    return function(err) {
+        console.error(err);
+        res.status(500).text(err);
+    }
+}
 
-       client.query('SELECT CURRENT_DATE as Date', function(err, result) {
-           done();
-           res.status(200).json(result.rows[0].date);
-       });
-   });
+app.get('/api/absence/:year/:month/:day', function(req, res) {
+    api.getAbsencesOnDate('' + req.params.year + '-' + req.params.month + '-' + req.params.day)
+        .then(function (absences) {
+            res.status(200).json(absences);
+        }, handleError(res));
+});
+
+app.get('/api/absence', function(req, res) {
+    api.getAbsences(req.query.start, req.query.end)
+        .then(function (absences) {
+            res.status(200).json(absences);
+        }, handleError(res));
 });
 
 var server = app.listen(3000);
