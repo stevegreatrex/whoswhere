@@ -6,7 +6,8 @@ CREATE DATABASE whoswhere;
 
 CREATE TABLE work_streams (
     id int primary key,
-    name varchar (50) not null
+    name varchar (50) not null,
+    color varchar(7) not null
 );
 
 CREATE TABLE absence_types (
@@ -47,10 +48,10 @@ CREATE AGGREGATE public.first (
 
 INSERT INTO work_streams (id, name)
 VALUES
-    (1, 'Proposition Development'),
-    (2, 'Engineering'),
-    (3, 'Sales and Marketing'),
-    (4, 'Project Management');
+    (1, 'Proposition Development', '#aa3939'),
+    (2, 'Engineering', '#aa6c39'),
+    (3, 'Sales and Marketing', '#226666'),
+    (4, 'Project Management', '#2d882d');
 
 INSERT INTO absence_types (id, name)
 VALUES
