@@ -49,6 +49,20 @@
             });
         }
 
+
+        Absence.prototype.getDays = function() {
+            switch (this.unit) {
+                case 'am':
+                case 'pm':
+                    return 0.5;
+                case 'all':
+                    return 1.0;
+                default:
+                    throw 'Unsupported unit';
+            }
+        };
+
+
         Absence.fromRow = function (row) {
             return new Absence({
                 user: {

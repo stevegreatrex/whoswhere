@@ -1,7 +1,7 @@
 /*global angular:false*/
 
 (function(angular) {
-angular.module('whoswhere.daySummary', ['whoswhere.absenceApi'])
+angular.module('whoswhere.daySummary', ['whoswhere.absenceApi', 'chart.js'])
 
     .controller('DaySummaryCtrl', ['$scope', 'moment', 'absenceApi', function ($scope, moment, absenceApi) {
         $scope.format = 'dd MMM yyyy';
@@ -14,14 +14,43 @@ angular.module('whoswhere.daySummary', ['whoswhere.absenceApi'])
             showWeeks: false
         };
 
+        $scope.chartByDepartment = { data:[], labels: [] };
+
         $scope.update = function() {
             $scope.loading = true;
             absenceApi.getAbsencesOnDate(moment($scope.date).format())
                 .then(function (daySummary) {
                     $scope.loading = false;
                     $scope.data = daySummary;
+
+                    var byDepartment = {};
+                    daySummary.absences.forEach(function(absence) {
+                       if (!byDepartment[absence.user.workStream]) {
+                           byDepartment[absence.user.workStream] = {
+                               total: 0,
+                               color: createChartColor(absence.user.workStreamColor)
+                           };
+                       }
+
+                        byDepartment[absence.user.workStream].total += absence.getDays();
+                    });
+
+                    $scope.chartByDepartment = {
+                        labels: Object.keys(byDepartment),
+                        data: Object.keys(byDepartment).map(function (stream) {
+                            return byDepartment[stream].total;
+                        }),
+                        colors:Object.keys(byDepartment).map(function (stream) {
+                            return byDepartment[stream].color;
+                        })
+                    };
+
+                    //replace a blank chart with an empty one
+                    if (!$scope.chartByDepartment.labels.length) {
+                        $scope.chartByDepartment = blankChart;
+                    }
                 });
-        }
+        };
 
         $scope.open = function($event) {
             $event.preventDefault();
@@ -60,5 +89,19 @@ angular.module('whoswhere.daySummary', ['whoswhere.absenceApi'])
             controller: 'DaySummaryCtrl',
             templateUrl: '/app/components/daySummary/day-summary.html'
         }
-    });;
+    });
+
+    function createChartColor(color) {
+        return {
+            fillColor: color,
+            pointColor: color,
+            strokeColor: color
+        };
+    }
+
+    var blankChart = {
+        labels: ['None'],
+        data: [1],
+        colors: [createChartColor('#888')]
+    };
 }(angular));

@@ -21,8 +21,13 @@
                 <i class="glyphicon glyphicon-chevron-right"></i>
             </button>
         </div>
-        <spinner for="loading" />
         <h1 class="large-number">{{data.absences.length}}</h1>
         <h2 class="large-number-description">people absent today</h2>
+
+        <canvas class="chart chart-doughnut"
+                ng-show="chartByDepartment.data.length"
+                data="chartByDepartment.data"
+                labels="chartByDepartment.labels"
+                colours="chartByDepartment.colors"></canvas>
     </div>
 </div>

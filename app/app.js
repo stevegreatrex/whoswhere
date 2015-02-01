@@ -7,7 +7,8 @@
         'whoswhere.daySummary',
         'whoswhere.spinner',
         'whoswhere.Model',
-        'ui.bootstrap'
+        'ui.bootstrap',
+        'chart.js'
     ])
 
     .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
