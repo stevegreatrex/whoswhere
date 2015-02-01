@@ -1,5 +1,35 @@
-<h1>Absences</h1>
+<div class="clearfix">
+    <h2 class="pull-left">{{displayTitle()}}</h2>
+    <div class="pull-right">
+        <div class="input-group date-navigation">
+            <span class="input-group-btn">
+                <button class="btn btn-primary" ng-click="changeDate(-1)">
+                    <i class="glyphicon glyphicon-chevron-left"></i>
+                </button>
+            </span>
+
+            <select ng-model="dateRangeType" ng-change="changeDateRangeType()" class="form-control">
+                <option ng-repeat="type in dateRangeTypes">{{type}}</option>
+            </select>
+
+            <span class="input-group-btn">
+                <button class="btn btn-primary" ng-click="changeDate(1)">
+                    <i class="glyphicon glyphicon-chevron-right"></i>
+                </button>
+            </span>
+        </div>
+    </div>
+</div>
 
 <canvas class="chart chart-bar"
         data="chartByDate.data"
-        labels="chartByDate.labels"></canvas>
+        labels="chartByDate.labels"
+        click="selectDate"></canvas>
+
+<div ng-show="!!selectedDate">
+    <h3>{{selectedDate | amDateFormat:'dddd D MMMM'}}</h3>
+    <div class="clearfix">
+        <day-summary class="col-sm-6" date="selectedDate"></day-summary>
+        <day-summary-list class="col-sm-6" date="selectedDate" showDatePicker="false" />
+    </div>
+</div>

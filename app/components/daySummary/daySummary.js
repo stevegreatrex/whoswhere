@@ -73,19 +73,29 @@ angular.module('whoswhere.daySummary', ['whoswhere.absenceApi', 'chart.js'])
         };
 
         $scope.update();
+
+        $scope.$watch('date', $scope.update, true);
     }])
 
     .directive('daySummaryList', function() {
         return {
             controller: 'DaySummaryCtrl',
-            templateUrl: '/app/components/daySummary/day-summary-list.html'
+            templateUrl: '/app/components/daySummary/day-summary-list.html',
+            scope: {
+                date: '=date',
+                showDatePicker: '=showDatePicker'
+            }
         }
     })
 
     .directive('daySummary', function() {
         return {
             controller: 'DaySummaryCtrl',
-            templateUrl: '/app/components/daySummary/day-summary.html'
+            templateUrl: '/app/components/daySummary/day-summary.html',
+            scope: {
+                date: '=date',
+                showDatePicker: '=showDatePicker'
+            }
         }
     });
 

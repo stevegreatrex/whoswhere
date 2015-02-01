@@ -1,6 +1,6 @@
 <div class="day-summary">
     <div>
-        <div class="clearfix btn-group date-picker-buttons">
+        <div class="clearfix btn-group date-picker-buttons" ng-show="showDatePicker">
             <button type="button" class="btn btn-default col-xs-2" ng-click="changeDay(-1)">
                 <i class="glyphicon glyphicon-chevron-left"></i>
             </button>
@@ -21,7 +21,6 @@
                 <i class="glyphicon glyphicon-chevron-right"></i>
             </button>
         </div>
-        <spinner for="loading" />
         <h5 class="text-muted text-center no-data-message" ng-show="data.absences.length === 0 && !loading">No-one is off!</h5>
         <ul class="absence-list" ng-show="!loading">
             <li ng-repeat="absence in data.absences | orderBy:'user.workStream'">

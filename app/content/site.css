@@ -103,3 +103,12 @@ body {
     color: #888;
     text-align: right;
 }
+
+.date-navigation {
+    width: 200px;
+    margin-top: 15px;
+}
+
+.date-navigation select {
+    text-align: center;
+}
