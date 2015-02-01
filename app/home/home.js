@@ -6,13 +6,12 @@
     ])
 
     .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/', {
+        $routeProvider.when('/home', {
             templateUrl: 'app/home/home.html',
             controller: 'HomeCtrl'
         });
     }])
 
     .controller('HomeCtrl', ['$scope', function ($scope) {
-        $scope.message = 'hello, world';
     }]);
 }(angular));

@@ -11,16 +11,7 @@
     app.use('/shared', express.static(path.join(__dirname, '../../shared-js')));
     app.use(express.static(path.join(__dirname, '../../app')));
 
-    app.get('/', function (req, res) {
-        res.render('index.html');
-    });
-
-    function handleError(res) {
-        return function (err) {
-            console.error(err);
-            res.status(500).send(err);
-        }
-    }
+    // configure the API calls
 
     app.get('/api/absence/:year/:month/:day', function (req, res) {
         api.getAbsencesOnDate('' + req.params.year + '-' + req.params.month + '-' + req.params.day)
@@ -41,6 +32,19 @@
                 res.status(200).json(absences);
             }, handleError(res));
     });
+
+    //for anything else, return our angular page
+
+    app.get('*', function (req, res) {
+        res.sendFile(path.join(__dirname, '../../app/index.html'));
+    });
+
+    function handleError(res) {
+        return function (err) {
+            console.error(err);
+            res.status(500).send(err);
+        }
+    }
 
     var server = app.listen(3000);
 

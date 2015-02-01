@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>WhosWhere</title>
 
-    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="lib/angular-chart.js/dist/angular-chart.css" />
-    <link rel="stylesheet" href="app/content/site.css" />
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/lib/angular-chart.js/dist/angular-chart.css" />
+    <link rel="stylesheet" href="/app/content/site.css" />
 </head>
 <body>
     <!-- navigation -->
@@ -24,9 +24,9 @@
             <a class="navbar-brand" href="#">WhosWhere</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse" ng-controller="NavCtrl">
-            <ul class="nav navbar-nav ng-hide" ng-show="true">
+            <ul class="nav navbar-nav ng-cloak" ng-cloak>
                 <li ng-repeat="link in links"
-                    ng-class="{ active: link.active }">
+                    ng-class="{ active: isActive(link.url) }">
                     <a href="{{link.url}}" >
                         <i class="glyphicon" ng-class="'glyphicon-' + link.icon"></i>
                         {{link.name}}
@@ -62,6 +62,7 @@
 
     <script src="/shared/model.js"></script>
     <script src="/app/home/home.js"></script>
+    <script src="/app/absences/absences.js"></script>
     <script src="/app/navigation/navigation.js"></script>
     <script src="/app/components/daySummary/daySummary.js"></script>
     <script src="/app/components/spinner/spinner.js"></script>

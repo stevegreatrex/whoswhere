@@ -20,6 +20,11 @@
             this.absences = absences || [];
         }
 
+        DateSummary.prototype.getDays = function() {
+            return this.absences.map(function(a) { return a.getDays(); })
+                .reduce(function(a,b) { return a+b; }, 0);
+        };
+
         DateSummary.fromRows = function (rows) {
             var dates = {};
             rows.forEach(function (row) {
@@ -48,7 +53,6 @@
                 self[key] = data[key];
             });
         }
-
 
         Absence.prototype.getDays = function() {
             switch (this.unit) {

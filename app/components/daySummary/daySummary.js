@@ -14,8 +14,6 @@ angular.module('whoswhere.daySummary', ['whoswhere.absenceApi', 'chart.js'])
             showWeeks: false
         };
 
-        $scope.chartByDepartment = { data:[], labels: [] };
-
         $scope.update = function() {
             $scope.loading = true;
             absenceApi.getAbsencesOnDate(moment($scope.date).format())

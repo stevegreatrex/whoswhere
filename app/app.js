@@ -1,12 +1,16 @@
 (function(angular) {
     angular.module('whoswhere', [
         'ngRoute',
+
         'whoswhere.navigation',
         'whoswhere.home',
+        'whoswhere.absences',
+
         'whoswhere.absenceApi',
         'whoswhere.daySummary',
         'whoswhere.spinner',
         'whoswhere.Model',
+
         'ui.bootstrap',
         'chart.js'
     ])
@@ -16,6 +20,6 @@
             enabled: true,
             requireBase: false
         });
-        $routeProvider.otherwise({redirectTo: '/'});
+        $routeProvider.otherwise({redirectTo: '/home'});
     }]);
 }(angular));

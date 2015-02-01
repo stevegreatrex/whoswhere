@@ -1,20 +1,23 @@
 (function(angular) {
 
-    function createLink(name, url, icon, $location) {
+    function createLink(name, url, icon) {
         return {
             name: name,
             url: url,
-            icon: icon,
-            active: $location.path() === url
+            icon: icon
         };
     }
 
-    angular.module('whoswhere.navigation', [])
+angular.module('whoswhere.navigation', [])
 
     .controller('NavCtrl', ['$scope', '$location', function ($scope, $location) {
         $scope.links = [
-            createLink('Home', '/', 'home', $location),
-            createLink('Absence', '/absence', 'calendar', $location)
+            createLink('Home', '/home', 'home'),
+            createLink('Absences', '/absences', 'calendar')
         ];
+
+        $scope.isActive = function(url) {
+            return $location.path().indexOf(url) === 0;
+        }
     }]);
 }(angular));
