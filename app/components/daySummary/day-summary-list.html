@@ -22,7 +22,21 @@
             </button>
         </div>
         <spinner for="loading" />
-        <h1 class="large-number">{{data.absences.length}}</h1>
-        <h2 class="large-number-description">people absent today</h2>
+        <h5 class="text-muted text-center no-data-message" ng-show="data.absences.length === 0 && !loading">No-one is off!</h5>
+        <ul class="absence-list" ng-show="!loading">
+            <li ng-repeat="absence in data.absences | orderBy:'user.workStream'">
+                <div class="media absence" ng-style="{ 'border-color': absence.user.workStreamColor }" title="{{absence.user.workStream}}">
+                    <div class="media-left">
+                        <img class="img-circle" ng-src="{{absence.user.imageUrl}}" height="30px">
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">{{absence.user.firstName}} {{absence.user.lastName}}</h4>
+                        <h5>{{absence.type}} <span ng-show="absence.unit !== 'all'">({{absence.unit}})</span></h5>
+                        <div class="workstream-marker"
+                             ng-style="{ 'background-color': absence.user.workStreamColor }"></div>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>

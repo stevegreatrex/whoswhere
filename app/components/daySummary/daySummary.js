@@ -48,10 +48,17 @@ angular.module('whoswhere.daySummary', ['whoswhere.absenceApi'])
         $scope.update();
     }])
 
+    .directive('daySummaryList', function() {
+        return {
+            controller: 'DaySummaryCtrl',
+            templateUrl: '/app/components/daySummary/day-summary-list.html'
+        }
+    })
+
     .directive('daySummary', function() {
         return {
             controller: 'DaySummaryCtrl',
             templateUrl: '/app/components/daySummary/day-summary.html'
         }
-    });
+    });;
 }(angular));
