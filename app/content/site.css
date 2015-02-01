@@ -112,3 +112,7 @@ body {
 .date-navigation select {
     text-align: center;
 }
+
+canvas.chart {
+    cursor: pointer;
+}

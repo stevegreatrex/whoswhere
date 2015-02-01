@@ -15,7 +15,7 @@
                     close-text="Close"
                     class="btn btn-default col-xs-8"
                     type="button">
-                {{date | amDateFormat: format.toUpperCase()}}
+               {{date | amDateFormat:'ddd D MMM'}}
             </button>
             <button type="button" class="btn btn-default col-xs-2" ng-click="changeDay(1)">
                 <i class="glyphicon glyphicon-chevron-right"></i>

@@ -11,9 +11,9 @@ angular.module('whoswhere.absences', ['ngRoute', 'whoswhere.absenceApi', 'whoswh
     }])
 
     .controller('AbsencesCtrl', ['$scope', 'moment', 'absenceApi', function ($scope, moment, absenceApi) {
-        $scope.dateRangeTypes = ['Week', 'Month'];
+        $scope.dateRangeTypes = ['Month', 'Week'];
         $scope.dateRangeType = $scope.dateRangeTypes[0];
-        $scope.dateRangeStart = moment().startOf('isoWeek');
+        $scope.dateRangeStart = moment().startOf('month');
         $scope.displayTitle = function() {
             if ($scope.dateRangeType === 'Week') {
                 return 'Week beginning ' + $scope.dateRangeStart.format('D MMMM');

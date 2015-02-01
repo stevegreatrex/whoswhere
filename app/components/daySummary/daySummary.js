@@ -5,7 +5,7 @@ angular.module('whoswhere.daySummary', ['whoswhere.absenceApi', 'chart.js'])
 
     .controller('DaySummaryCtrl', ['$scope', 'moment', 'absenceApi', function ($scope, moment, absenceApi) {
         $scope.format = 'dd MMM yyyy';
-        $scope.date = new Date();
+        $scope.date = $scope.date || new Date();
         $scope.dateOptions = {
             formatYear: 'yyyy',
             formatDay: 'd',
@@ -68,7 +68,7 @@ angular.module('whoswhere.daySummary', ['whoswhere.absenceApi', 'chart.js'])
         };
 
         $scope.changeDay = function(offset) {
-            $scope.date = moment($scope.date).add(offset, 'days').toDate()
+            $scope.date = moment($scope.date).add(offset, 'days').toDate();
             $scope.update();
         };
 
@@ -82,7 +82,7 @@ angular.module('whoswhere.daySummary', ['whoswhere.absenceApi', 'chart.js'])
             controller: 'DaySummaryCtrl',
             templateUrl: '/app/components/daySummary/day-summary-list.html',
             scope: {
-                date: '=date',
+                date: '=?',
                 showDatePicker: '=showDatePicker'
             }
         }
@@ -93,7 +93,7 @@ angular.module('whoswhere.daySummary', ['whoswhere.absenceApi', 'chart.js'])
             controller: 'DaySummaryCtrl',
             templateUrl: '/app/components/daySummary/day-summary.html',
             scope: {
-                date: '=date',
+                date: '=?',
                 showDatePicker: '=showDatePicker'
             }
         }
