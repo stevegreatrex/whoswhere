@@ -3,10 +3,11 @@
 (function(require) {
     var express = require('express');
     var api = require('./api');
+    var config = require('./config');
     var path = require('path');
 
     var app = express();
-    ;
+
     app.use('/lib', express.static(path.join(__dirname, '../../bower_components')));
     app.use('/app', express.static(path.join(__dirname, '../../app')));
     app.use('/shared', express.static(path.join(__dirname, '../../shared-js')));
@@ -47,7 +48,7 @@
         }
     }
 
-    var server = app.listen(3000, function () {
+    var server = app.listen(config.port, config.ip, function () {
         console.log('Server started');
     });
 
