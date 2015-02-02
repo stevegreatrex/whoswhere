@@ -5,7 +5,8 @@
     var api = require('./api');
     var path = require('path');
 
-    var app = express();;
+    var app = express();
+    ;
     app.use('/lib', express.static(path.join(__dirname, '../../bower_components')));
     app.use('/app', express.static(path.join(__dirname, '../../app')));
     app.use('/shared', express.static(path.join(__dirname, '../../shared-js')));
@@ -46,7 +47,8 @@
         }
     }
 
-    var server = app.listen(3000);
+    var server = app.listen(3000, function () {
+        console.log('Server started on http://%s:%s', server.address().address, server.address().port);
+    });
 
-    console.log('Server started on http://%s:%s', server.address().address, server.address().port);
 }(require));
