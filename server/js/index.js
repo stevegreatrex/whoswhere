@@ -48,7 +48,7 @@
     }
 
     var server = app.listen(3000, function () {
-        console.log('Server started on http://%s:%s', server.address().address, server.address().port);
+        console.log('Server started');
     });
 
 }(require));
