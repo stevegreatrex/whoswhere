@@ -5,12 +5,9 @@
                 <i class="glyphicon glyphicon-chevron-left"></i>
             </button>
             <button ng-click="open($event)"
-                    datepicker-popup="{{format}}"
-                    datepicker-options="dateOptions"
                     ng-model="date"
                     ng-change="update()"
                     is-open="opened"
-                    date-disabled="disabled(date, mode)"
                     show-button-bar="false"
                     close-text="Close"
                     class="btn btn-default col-xs-8"

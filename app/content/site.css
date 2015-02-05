@@ -21,28 +21,6 @@ body {
     }
 }
 
-.spinner {
-    -animation: spin 1s infinite linear;
-    -webkit-animation: spin2 1s infinite linear;
-}
-
-@-webkit-keyframes spin2 {
-    from { -webkit-transform: rotate(0deg);}
-    to { -webkit-transform: rotate(360deg);}
-}
-
-@keyframes spin {
-    from { transform: scale(1) rotate(0deg);}
-    to { transform: scale(1) rotate(360deg);}
-}
-
-.spinner-lg {
-    font-size: 30px;
-    text-align: center;
-    display: block;
-    margin: 30px;
-}
-
 .date-picker-buttons {
     display: block;
 }
@@ -86,9 +64,9 @@ body {
 }
 
 .large-number {
-    font-size: 78px;
+    font-size: 100px;
     font-family: georgia, sans-serif;
-    margin: 0;
+    margin: 0 0 20px 0;
     line-height: 85px;
     display: inline-block;
     width: 30%;
@@ -116,3 +94,31 @@ body {
 canvas.chart {
     cursor: pointer;
 }
+
+div:not(:first-child) .datepicker-header {
+    margin-top: 10px;
+}
+
+@media (min-width:768px) {
+    .inline-datepicker {
+        display: inline-block;
+    }
+
+    .datepicker-header {
+        margin-top: 0;
+    }
+}
+
+.inline-datepicker [role=gridcell][aria-disabled=true] {
+    opacity: 0.1;
+}
+
+.inline-datepicker table[role=grid] {
+    width: 100%;
+}
+
+.inline-datepicker td:nth-last-of-type(-n + 2),
+.inline-datepicker thead tr:last-child th:nth-last-of-type(-n + 2){
+    display: none;
+}
+

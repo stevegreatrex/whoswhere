@@ -5,7 +5,7 @@ angular.module('whoswhere.absences', ['ngRoute', 'whoswhere.absenceApi', 'whoswh
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/absences', {
-            templateUrl: 'app/absences/absences.html',
+            templateUrl: '/app/absences/absences.html',
             controller: 'AbsencesCtrl'
         });
     }])

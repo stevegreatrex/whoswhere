@@ -1,0 +1,28 @@
+<div class="clearfix">
+    <div class="well col-sm-9 text-center">
+        <div class="col-sm-6">
+            <h3 class="datepicker-header text-center">From</h3>
+            <datepicker ng-model="start"
+                        class="inline-datepicker"
+                        ng-change="changeStart()"
+                        date-disabled="disableWeekends(date, mode)"
+                        min-date="minDate"></datepicker>
+        </div>
+
+        <div class="col-sm-6">
+            <h3 class="datepicker-header text-center">To</h3>
+            <datepicker ng-model="end"
+                        class="inline-datepicker"
+                        date-disabled="disableWeekends(date, mode)"
+                        ng-change="calculateDays()"
+                        min-date="start"></datepicker>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <h1 class="large-number">{{days}}</h1>
+        <h2 class="large-number-description">days</h2>
+        <button class="btn-lg btn btn-success btn-block">
+            Submit Request
+        </button>
+    </div>
+</div>

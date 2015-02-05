@@ -1,25 +1,32 @@
 (function(angular) {
-    angular.module('whoswhere', [
-        'ngRoute',
+angular.module('whoswhere', [
+    'ngRoute',
 
-        'whoswhere.navigation',
-        'whoswhere.home',
-        'whoswhere.absences',
+    'whoswhere.navigation',
+    'whoswhere.home',
+    'whoswhere.absences',
+    'whoswhere.createAbsence',
 
-        'whoswhere.absenceApi',
-        'whoswhere.daySummary',
-        'whoswhere.spinner',
-        'whoswhere.Model',
+    'whoswhere.absenceApi',
+    'whoswhere.daySummary',
+    'whoswhere.Model',
 
-        'ui.bootstrap',
-        'chart.js'
-    ])
+    'ui.bootstrap',
+    'chart.js'
+  ])
 
-    .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-        $locationProvider.html5Mode({
-            enabled: true,
-            requireBase: false
-        });
-        $routeProvider.otherwise({redirectTo: '/home'});
-    }]);
+  .config(['$routeProvider', '$locationProvider', 'datepickerConfig', function($routeProvider, $locationProvider, datepickerConfig) {
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    });
+    $routeProvider.otherwise({redirectTo: '/home'});
+
+    datepickerConfig.formatYear = 'yyyy';
+    datepickerConfig.formatDay = 'd';
+    datepickerConfig.startingDay = 1;
+    datepickerConfig.showButtonBar = false;
+    datepickerConfig.showWeeks = false;
+
+  }]);
 }(angular));

@@ -6,13 +6,6 @@ angular.module('whoswhere.daySummary', ['whoswhere.absenceApi', 'chart.js'])
     .controller('DaySummaryCtrl', ['$scope', 'moment', 'absenceApi', function ($scope, moment, absenceApi) {
         $scope.format = 'dd MMM yyyy';
         $scope.date = $scope.date || new Date();
-        $scope.dateOptions = {
-            formatYear: 'yyyy',
-            formatDay: 'd',
-            startingDay: 1,
-            showButtonBar: false,
-            showWeeks: false
-        };
 
         $scope.update = function() {
             $scope.loading = true;
@@ -55,11 +48,6 @@ angular.module('whoswhere.daySummary', ['whoswhere.absenceApi', 'chart.js'])
             $event.stopPropagation();
 
             $scope.opened = true;
-        };
-
-        // Disable weekend selection
-        $scope.disabled = function(date, mode) {
-            return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
         };
 
         $scope.today = function() {
