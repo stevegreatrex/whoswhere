@@ -6,6 +6,16 @@ body {
     display: none !important;
 }
 
+.home-buttons button:not(:first-child) {
+    margin-top: 10px;
+}
+
+@media (min-width:415px) {
+    .home-buttons button {
+        margin-top: 0;
+    }
+}
+
 .page-loading-message {
     margin-top: 50px;
     display: inline-block;
