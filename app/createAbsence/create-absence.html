@@ -1,24 +1,30 @@
 <div class="clearfix">
     <div class="well col-sm-9 text-center">
-        <div class="col-sm-6">
+        <div class="col-sm-6 date-picker-container">
             <h3 class="datepicker-header text-center">From</h3>
             <datepicker ng-model="start"
                         class="inline-datepicker"
                         ng-change="changeStart()"
                         date-disabled="disableWeekends(date, mode)"
                         min-date="minDate"></datepicker>
+            <select ng-model="startSegment" ng-change="calculateDays()" ng-show="showStartSegment" class="form-control">
+                <option ng-repeat="segment in daySegments">{{segment}}</option>
+            </select>
         </div>
 
-        <div class="col-sm-6">
+        <div class="col-sm-6 date-picker-container">
             <h3 class="datepicker-header text-center">To</h3>
             <datepicker ng-model="end"
                         class="inline-datepicker"
                         date-disabled="disableWeekends(date, mode)"
                         ng-change="calculateDays()"
                         min-date="start"></datepicker>
+            <select ng-model="endSegment" ng-change="calculateDays()" class="form-control">
+                <option ng-repeat="segment in daySegments">{{segment}}</option>
+            </select>
         </div>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-3 date-picker-container">
         <h1 class="large-number">{{days}}</h1>
         <h2 class="large-number-description">days</h2>
         <button class="btn-lg btn btn-success btn-block">

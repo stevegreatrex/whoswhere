@@ -15,6 +15,11 @@ angular.module('whoswhere.createAbsence', ['ngRoute', 'whoswhere.absenceApi', 'w
     $scope.start = nextWeekDay(moment().add(1, 'days')).toDate();
     $scope.end = moment($scope.start).toDate();
 
+		$scope.daySegments = ['Full Day', 'AM', 'PM'];
+		$scope.startSegment = $scope.daySegments[0];
+		$scope.endSegment = $scope.daySegments[0];
+		$scope.showStartSegment = false;
+
     $scope.disableWeekends = function(date, mode) {
       return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
     };
@@ -26,6 +31,20 @@ angular.module('whoswhere.createAbsence', ['ngRoute', 'whoswhere.absenceApi', 'w
 
     $scope.calculateDays = function() {
       $scope.days = countWeekDays(moment($scope.start), moment($scope.end));
+			if (moment($scope.start).isSame(moment($scope.end), 'day')) {
+				$scope.showStartSegment = false;
+				$scope.startSegment = $scope.daySegments[0];
+			} else {
+				$scope.showStartSegment = true;
+			}
+
+			if ($scope.startSegment !== $scope.daySegments[0]) {
+				$scope.days -= 0.5;
+			}
+
+			if ($scope.endSegment !== $scope.daySegments[0]) {
+				$scope.days -= 0.5;
+			}
     };
 
     $scope.calculateDays();
