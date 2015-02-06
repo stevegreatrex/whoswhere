@@ -6,12 +6,12 @@ body {
     display: none !important;
 }
 
-.home-buttons button:not(:first-child) {
+.home-buttons a:not(:first-child) {
     margin-top: 10px;
 }
 
 @media (min-width:415px) {
-    .home-buttons button {
+    .home-buttons a:not(:first-child) {
         margin-top: 0;
     }
 }

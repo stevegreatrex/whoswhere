@@ -5,6 +5,7 @@
                 <i class="glyphicon glyphicon-chevron-left"></i>
             </button>
             <button ng-click="open($event)"
+                    datepicker-popup="{{format}}"
                     ng-model="date"
                     ng-change="update()"
                     is-open="opened"
