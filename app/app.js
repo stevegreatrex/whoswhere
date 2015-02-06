@@ -1,19 +1,20 @@
 (function(angular) {
 angular.module('whoswhere', [
-    'ngRoute',
+	'ngRoute',
 
-    'whoswhere.navigation',
-    'whoswhere.home',
-    'whoswhere.absences',
-    'whoswhere.createAbsence',
+	'whoswhere.navigation',
+	'whoswhere.home',
+	'whoswhere.absences',
+	'whoswhere.createAbsence',
 
-    'whoswhere.absenceApi',
-    'whoswhere.daySummary',
-    'whoswhere.Model',
+	'whoswhere.absenceApi',
+	'whoswhere.daySummary',
+	'whoswhere.Model',
+	'whoswhere.hideWeekends',
 
-    'ui.bootstrap',
-    'chart.js'
-  ])
+	'ui.bootstrap',
+	'chart.js'
+])
 
   .config(['$routeProvider', '$locationProvider', 'datepickerConfig', function($routeProvider, $locationProvider, datepickerConfig) {
     $locationProvider.html5Mode({

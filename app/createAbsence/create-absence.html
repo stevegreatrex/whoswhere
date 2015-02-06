@@ -5,6 +5,7 @@
             <datepicker ng-model="start"
                         class="inline-datepicker"
                         ng-change="changeStart()"
+                        hide-weekends
                         date-disabled="disableWeekends(date, mode)"
                         min-date="minDate"></datepicker>
             <select ng-model="startSegment"
@@ -21,6 +22,7 @@
             <datepicker ng-model="end"
                         class="inline-datepicker"
                         date-disabled="disableWeekends(date, mode)"
+                        hide-weekends
                         ng-change="calculateDays()"
                         min-date="start"></datepicker>
             <select ng-model="endSegment"

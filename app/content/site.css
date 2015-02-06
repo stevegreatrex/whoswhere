@@ -134,11 +134,9 @@ div:not(:first-child) .datepicker-header {
 
 @media (min-width: 768px) {
     .date-picker-container .form-control {
-        margin-left: 20px;
-        margin-right: 20px;
-        margin-left: 41px;
-        margin-right: 41px;
-        width: calc(100% - 115px);
+        margin-left: 56px;
+        margin-right: 56px;
+        width: calc(100% - 112px);
     }
 }
 
