@@ -13,17 +13,17 @@
 <body>
     <!-- navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top navbar">
-    <div class="container-fluid">
+    <div class="container-fluid" ng-controller="NavCtrl">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" ng-click="collapsed = !collapsed">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">WhosWhere</a>
+            <a class="navbar-brand" href="/">WhosWhere</a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse" ng-controller="NavCtrl">
+        <div id="navbar" class="collapse navbar-collapse" collapse="collapsed">
             <ul class="nav navbar-nav ng-cloak" ng-cloak>
                 <li ng-repeat="link in links"
                     ng-class="{ active: isActive(link.url) }">

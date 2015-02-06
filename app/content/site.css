@@ -120,7 +120,7 @@ div:not(:first-child) .datepicker-header {
 }
 
 .inline-datepicker [role=gridcell][aria-disabled=true] {
-    opacity: 0.1;
+    opacity: 0.5;
 }
 
 .inline-datepicker table[role=grid] {
