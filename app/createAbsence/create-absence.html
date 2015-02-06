@@ -1,5 +1,5 @@
 <div class="clearfix">
-    <div class="well col-sm-9 text-center">
+    <div class="date-pickers well col-sm-9 text-center" ng-class="{ 'submitting': submitting }">
         <div class="col-sm-6 date-picker-container">
             <h3 class="datepicker-header text-center">From</h3>
             <datepicker ng-model="start"
@@ -7,7 +7,11 @@
                         ng-change="changeStart()"
                         date-disabled="disableWeekends(date, mode)"
                         min-date="minDate"></datepicker>
-            <select ng-model="startSegment" ng-change="calculateDays()" ng-show="showStartSegment" class="form-control">
+            <select ng-model="startSegment"
+                    ng-disabled="submitting"
+                    ng-change="calculateDays()"
+                    ng-show="showStartSegment"
+                    class="form-control">
                 <option ng-repeat="segment in daySegments">{{segment}}</option>
             </select>
         </div>
@@ -19,7 +23,10 @@
                         date-disabled="disableWeekends(date, mode)"
                         ng-change="calculateDays()"
                         min-date="start"></datepicker>
-            <select ng-model="endSegment" ng-change="calculateDays()" class="form-control">
+            <select ng-model="endSegment"
+                    ng-change="calculateDays()"
+                    ng-disabled="submitting"
+                    class="form-control">
                 <option ng-repeat="segment in daySegments">{{segment}}</option>
             </select>
         </div>
@@ -27,7 +34,16 @@
     <div class="col-sm-3 date-picker-container">
         <h1 class="large-number">{{days}}</h1>
         <h2 class="large-number-description">days</h2>
-        <button class="btn-lg btn btn-success btn-block">
+
+        <div class="btn-group btn-group-lg btn-group-justified absence-types" ng-class="{ submitting: submitting }">
+            <a class="btn btn-default"
+                    ng-repeat="type in absenceTypes"
+                    ng-click="setAbsenceType(type)"
+                    ng-disabled="submitting"
+                    ng-class="{ active: absenceType == type }">{{type.name}}</a>
+        </div>
+
+        <button class="btn-lg btn btn-success btn-block" ng-click="submit()" ng-disabled="submitting" >
             Submit Request
         </button>
     </div>

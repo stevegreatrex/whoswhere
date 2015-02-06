@@ -20,6 +20,28 @@ angular.module('whoswhere.createAbsence', ['ngRoute', 'whoswhere.absenceApi', 'w
 		$scope.endSegment = $scope.daySegments[0];
 		$scope.showStartSegment = false;
 
+		$scope.absenceTypes = [];
+		$scope.absenceType = null;
+
+		absenceApi.getAbsenceTypes().then(function(types) {
+			$scope.absenceTypes = types;
+			$scope.absenceType = $scope.absenceTypes[0];
+		});
+
+		$scope.setAbsenceType = function(type) {
+			$scope.absenceType = type;
+		};
+
+		$scope.submit = function() {
+			$scope.submitting = true;
+			//TODO: actually send the message
+			setTimeout(function() {
+				$scope.$apply(function() {
+					$scope.submitting = false;
+				});
+			}, 3000);
+		};
+
     $scope.disableWeekends = function(date, mode) {
       return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
     };

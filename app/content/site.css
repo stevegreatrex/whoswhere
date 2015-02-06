@@ -132,11 +132,60 @@ div:not(:first-child) .datepicker-header {
     display: none;
 }
 
-.date-picker-container .form-control {
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-left: 41px;
-    margin-right: 41px;
-    width: calc(100% - 115px);
+@media (min-width: 768px) {
+    .date-picker-container .form-control {
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-left: 41px;
+        margin-right: 41px;
+        width: calc(100% - 115px);
+    }
+}
+
+.absence-types {
+    margin-bottom: 20px;
+    transition: height 1s, padding 1s, margin 1s;
+    -webkit-transition: height 1s, padding 1s, margin 1s;
+    overflow: hidden;
+}
+
+.absence-types.submitting {
+    height: 0;
+    display: block;
+    margin: 0;
+}
+
+.absence-types .btn {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.date-pickers {
+    transition: width 1s, height 1s, padding 1s, margin 1s;
+    -webkit-transition: width 1s, height 1s, padding 1s, margin 1s;
+    overflow: hidden;
+}
+
+.date-pickers.submitting .date-picker-container {
+    transition: opacity 1s;
+    -webkit-transition: opacity 1s;
+}
+
+.date-pickers.submitting {
+    height: 0;
+    padding: 0;
+    margin: 0;
+    min-height: 0;
+}
+
+.date-pickers.submitting .date-picker-container {
+    opacity: 0;
+}
+
+@media (min-width: 768px) {
+    .date-pickers.submitting {
+        width: 0;
+        height: 315px;
+    }
 }
 
