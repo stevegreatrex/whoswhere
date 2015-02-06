@@ -111,7 +111,7 @@ div:not(:first-child) .datepicker-header {
 
 @media (min-width:768px) {
     .inline-datepicker {
-        display: inline-block;
+        margin-bottom: 5px;
     }
 
     .datepicker-header {
@@ -130,14 +130,6 @@ div:not(:first-child) .datepicker-header {
 .inline-datepicker td:nth-last-of-type(-n + 2),
 .inline-datepicker thead tr:last-child th:nth-last-of-type(-n + 2){
     display: none;
-}
-
-@media (min-width: 768px) {
-    .date-picker-container .form-control {
-        margin-left: 56px;
-        margin-right: 56px;
-        width: calc(100% - 112px);
-    }
 }
 
 .absence-types {
