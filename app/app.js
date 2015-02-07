@@ -11,6 +11,7 @@ angular.module('whoswhere', [
 	'whoswhere.daySummary',
 	'whoswhere.Model',
 	'whoswhere.hideWeekends',
+	'whoswhere.spinner',
 
 	'ui.bootstrap',
 	'chart.js'

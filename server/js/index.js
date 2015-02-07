@@ -2,11 +2,14 @@
 
 (function(require) {
 	var express = require('express');
+	var bodyParser= require('body-parser');
 	var api = require('./api');
 	var config = require('./config');
 	var path = require('path');
 
 	var app = express();
+
+	app.use(bodyParser.json());
 
 	app.use('/lib', express.static(path.join(__dirname, '../../bower_components')));
 	app.use('/app', express.static(path.join(__dirname, '../../app')));
@@ -42,6 +45,16 @@
 			}, handleError(res));
 	});
 
+	app.post('/api/absence', function(req,res) {
+		console.log('Absence request:');
+		console.log(req.body);
+
+		//fake some processing!
+		setTimeout(function() {
+			res.status(200).json({ ok: true });
+		}, 2000);
+	});
+
 	//for anything else, return our angular page
 
 	app.get('*', function (req, res) {
@@ -55,7 +68,7 @@
 		}
 	}
 
-	var server = app.listen(config.port, config.ip, function () {
+	app.listen(config.port, config.ip, function () {
 		console.log('Server started');
 	});
 

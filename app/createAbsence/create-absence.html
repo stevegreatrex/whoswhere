@@ -45,8 +45,29 @@
                     ng-class="{ active: absenceType == type }">{{type.name}}</a>
         </div>
 
-        <button class="btn-lg btn btn-success btn-block" ng-click="submit()" ng-disabled="submitting" >
+        <button class="btn-lg btn btn-success btn-block" ng-click="submit()" ng-disabled="submitting" ng-hide="submitted">
             Submit Request
         </button>
+        <spinner for="submitting" class="spinner spinner-lg" ng-hide="submitted" />
+        <alert type="success" ng-show="submitted">
+            <strong>Success!</strong>
+            Your request has been submitted for approval
+        </alert>
+    </div>
+
+    <div class="col-sm-9 response-container jumbotron" ng-class="{ submitted: submitted }">
+        <h1>What's next?</h1>
+        <p class="home-buttons">
+            <a class="btn btn-success btn-lg" href="#" ng-click="reload()">
+                <i class="glyphicon glyphicon-plus"></i> Make another request
+            </a>
+            <a class="btn btn-primary btn-lg" href="/absences">
+                <i class="glyphicon glyphicon-calendar"></i> Find my team
+            </a>
+            <a class="btn btn-primary btn-lg" href="/">
+                <i class="glyphicon glyphicon-home"></i> Go home
+            </a>
+
+        </p>
     </div>
 </div>

@@ -32,6 +32,13 @@ angular.module('whoswhere.absenceApi', ['angularMoment', 'whoswhere.Model'])
 				});
 		};
 
+		AbsenceApi.prototype.requestAbsence = function(absence) {
+			console.log('SERVER REQUEST: ');
+			console.log(absence);
+
+			return $http.post('/api/absence', absence);
+		};
+
 		return new AbsenceApi();
 	}]);
 }(angular));

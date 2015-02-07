@@ -166,6 +166,7 @@ div:not(:first-child) .datepicker-header {
     padding: 0;
     margin: 0;
     min-height: 0;
+    border: none;
 }
 
 .date-pickers.submitting .date-picker-container {
@@ -179,3 +180,36 @@ div:not(:first-child) .datepicker-header {
     }
 }
 
+.spinner {
+    -animation: spin 1s infinite linear;
+    -webkit-animation: spin2 1s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+
+.spinner-lg {
+    font-size: 30px;
+    text-align: center;
+    display: block;
+    margin: 30px;
+}
+
+.response-container {
+   transition: opacity 1s;
+    -webkit-transition: opacity 1s;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.response-container:not(.submitted) {
+    opacity: 0;
+    height: 0;
+}
