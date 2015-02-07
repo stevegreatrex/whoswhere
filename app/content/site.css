@@ -212,4 +212,30 @@ div:not(:first-child) .datepicker-header {
 .response-container:not(.submitted) {
     opacity: 0;
     height: 0;
+    display: none;
+}
+
+.absence-preview {
+    overflow-x: auto;
+}
+
+.absence-preview table {
+    table-layout: fixed;
+}
+
+.btn-submit {
+    border-radius: 5px 5px 0 0;
+}
+
+.alert-level {
+    border-radius: 0 0 5px 5px
+}
+
+.empty-days {
+    font-weight: normal;
+    color: #888;
+    text-transform: uppercase;
+    font-size: 12px;
+    display: block;
+    text-align: right;
 }

@@ -10,7 +10,7 @@
 			});
 		}])
 
-		.controller('CreateAbsenceCtrl', ['$scope', '$window', 'moment', 'absenceApi', function ($scope, $window, moment, absenceApi) {
+		.controller('CreateAbsenceCtrl', ['$scope', '$window', 'moment', 'absenceApi', 'Model', function ($scope, $window, moment, absenceApi, Model) {
 			$scope.minDate = moment().toDate();
 			$scope.start = nextWeekDay(moment().add(1, 'days')).toDate();
 			$scope.end = moment($scope.start).toDate();
@@ -22,6 +22,8 @@
 
 			$scope.absenceTypes = [];
 			$scope.absenceType = null;
+
+			$scope.previewEmptyDays = true;
 
 			absenceApi.getAbsenceTypes().then(function(types) {
 				$scope.absenceTypes = types;
@@ -69,7 +71,31 @@
 				if ($scope.endSegment !== $scope.daySegments[0]) {
 					$scope.days -= 0.5;
 				}
+
+				$scope.previewAbsence();
 			};
+
+			$scope.previewAbsence = function() {
+				$scope.buildingPreview = true;
+				absenceApi.getAbsences($scope.start, $scope.end).then(function(absences) {
+					$scope.buildingPreview = false;
+					$scope.preview = absences;
+					setAlertLevel(absences, [
+						{ limit: 0, level: 'success', message: 'Looking good!' },
+						{ limit: 1, level: 'warning', message: 'Other people are off in this time' },
+						{ limit: 3, level: 'warning', message: 'Several other people are off in this time' },
+						{ limit: 10, level: 'danger', message: 'Lots of other people are off in this time' },
+					])
+				});
+			};
+
+			function setAlertLevel(absences, levels) {
+				levels.forEach(function(level) {
+					if (absences.some(function(a) { return a.getDays() >= level.limit; })) {
+						$scope.alertLevel = level;
+					}
+				});
+			}
 
 			$scope.calculateDays();
 

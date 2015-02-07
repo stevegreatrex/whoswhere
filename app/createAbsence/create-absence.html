@@ -45,9 +45,18 @@
                     ng-class="{ active: absenceType == type }">{{type.name}}</a>
         </div>
 
-        <button class="btn-lg btn btn-success btn-block" ng-click="submit()" ng-disabled="submitting" ng-hide="submitted">
+        <button class="btn-lg btn btn-block btn-submit"
+                ng-click="submit()"
+                ng-disabled="submitting"
+                ng-hide="submitted"
+                ng-class="alertLevel ? 'btn-' + alertLevel.level : 'btn-success'">
             Submit Request
         </button>
+
+        <alert type="{{alertLevel.level}}" class="alert-level" ng-show="!submitted">
+            {{alertLevel.message}}
+        </alert>
+
         <spinner for="submitting" class="spinner spinner-lg" ng-hide="submitted" />
         <alert type="success" ng-show="submitted">
             <strong>Success!</strong>
@@ -70,4 +79,21 @@
 
         </p>
     </div>
+</div>
+
+<div class="absence-preview" ng-show="!submitting && !submitted">
+    <label class="clearfix empty-days">
+        <input type="checkbox" ng-model="previewEmptyDays">
+        Show Empty Days
+    </label>
+    <table class="table table-bordered table-condensed">
+        <tr ng-repeat="day in preview" ng-show="previewEmptyDays || !!day.getDays()">
+            <td  class="text-center">
+                {{day.date | amDateFormat: 'Do MMM YYYY'}}
+            </td>
+            <td class="text-center" title="Total Absences" heat-map="day.getDays()" heat-map-max="10">
+                {{day.getDays() || '-'}}
+            </td>
+        </tr>
+    </table>
 </div>
