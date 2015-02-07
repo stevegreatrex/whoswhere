@@ -13,7 +13,9 @@ angular.module('whoswhere.hideWeekends', [])
 			$scope.$watch(
 				function() { return $element[0].childNodes.length; },
 				function () {
-					$element.find('th[colspan=5]').attr('colspan', 3);
+					$element.find('th[colspan=5]')
+						.attr('colspan', 3)
+						.find('>button').attr('disabled', 'disabled');
 				}
 			)
 		}

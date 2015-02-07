@@ -27,7 +27,7 @@
             <ul class="nav navbar-nav ng-cloak" ng-cloak>
                 <li ng-repeat="link in links"
                     ng-class="{ active: isActive(link.url) }">
-                    <a href="{{link.url}}" >
+                    <a ng-click="$parent.collapsed = true" ng-href="{{link.url}}">
                         <i class="glyphicon" ng-class="'glyphicon-' + link.icon"></i>
                         {{link.name}}
                     </a>
