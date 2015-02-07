@@ -4,7 +4,7 @@
   "description": "",
   "main": "server/js/index.js",
   "scripts": {
-    "postinstall": "HOME=$HOME/app-root/runtime bower install --config.interactive=false --force-latest",
+    "postinstall": "bower install --config.interactive=false --force-latest",
     "prestart": "npm install",
     "start": "node server/js/index.js"
   },
